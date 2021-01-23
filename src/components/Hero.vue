@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .hero {
 	position: relative;
 	display: flex;
@@ -80,6 +80,7 @@ export default {
 		background-position: center center;
 		background-repeat: no-repeat;
 		background-size: cover;
+		z-index: 0;
 	}
 }
 </style>
