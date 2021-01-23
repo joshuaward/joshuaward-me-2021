@@ -46,6 +46,7 @@ export default {
 	padding-top: 0.75rem;
 	padding-bottom: 0.75rem;
 	background-color: rgba($primary,0.125);
+	z-index: 9999;
 	&__inner {
 		// @include container;
 		display: flex;
