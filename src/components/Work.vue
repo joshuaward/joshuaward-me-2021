@@ -43,7 +43,7 @@ export default {
 					"title": "Parallax Mountains",
 					"description": "Layered SVG mountains with offset parallax effect using jQuery.",
 					"tools": ['HTML5', 'Sass', 'CSS3', 'jQuery'],
-					"href": "https://tic-tac-toe--react.herokuapp.com/",
+					"href": "https://codepen.io/joshuaward/pen/vZoaNE",
 					"target": "_blank",
 					"cta": "View Project"
 				},
@@ -59,7 +59,7 @@ export default {
 					"title": "JavaScript Form Validation",
 					"description": "Form validation with user input to make sure you're not a robot. It also has floating labels!",
 					"tools": ['HTML5', 'Sass', 'CSS3', 'Babel', 'ES6', 'JavaScript'],
-					"href": "https://codepen.io/joshuaward/pen/WZqyLQ",
+					"href": "https://codepen.io/joshuaward/pen/OOJVmv",
 					"target": "_blank",
 					"cta": "View Project"
 				},
@@ -75,7 +75,7 @@ export default {
 					"title": "Fun with HTML5 Canvas",
 					"description": "Draw with your mouse using ES6 and HTML5 canvas.",
 					"tools": ['HTML5', 'Babel', 'ES6', 'JavaScript'],
-					"href": "https://codepen.io/joshuaward/pen/GORKbX",
+					"href": "https://codepen.io/joshuaward/pen/QqRaoe",
 					"target": "_blank",
 					"cta": "View Project"
 				},
@@ -84,14 +84,14 @@ export default {
 					"title": "Responsive Split Hidden Menu w/ Animation",
 					"description": "Draw with your mouse using ES6 and HTML5 canvas.",
 					"tools": ['HTML5', 'Babel', 'ES6', 'JavaScript'],
-					"href": "https://codepen.io/joshuaward/pen/GORKbX",
+					"href": "https://codepen.io/joshuaward/pen/YvQdpr",
 					"target": "_blank",
 					"cta": "View Project"
 				},
 				{
-					"title": "React Tic Tac Toe",
-					"description": "Simple tic tac toe built with React and deployed with Heroku. It keeps a log of moves and has the ability to move back to certain steps in the game without mutating the data.",
-					"tools": ['React', 'CSS3', 'ES6'],
+					"title": "VueDo List",
+					"description": "A simple browser to-do list that stores your tasks in local storage and removes them once deleted. It shows errors when you try to add a blank task. There are animations for completed tasks as well.",
+					"tools": ['Vue', 'CSS3', 'SCSS', 'JavaScript'],
 					"href": "https://tic-tac-toe--react.herokuapp.com/",
 					"target": "_blank",
 					"cta": "View Project"
