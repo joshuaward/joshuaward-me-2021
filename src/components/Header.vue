@@ -1,16 +1,24 @@
 <template lang="pug">
-header.header(:class="{'is-active': menuOpen}")
+header.header(:class="{'is-sticky': isSticky, 'is-active': menuOpen}")
 	.header__inner
-		router-link.header__logo(to="/")
-			//- svg(version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve")
-			//- 	circle.header__logo-circle(cx="25" cy="25" r="25")
-			//- 	polygon.header__logo-mountains(points="34.1,25 27.7,13.9 21.3,25 19.2,28.7 16.5,24 13,30 9.5,36.1 14.9,36.1 16.5,36.1 23.5,36.1 27.7,36.1 40.5,36.1")
+		a.header__logo(href="#top")
+			img(src="@/assets/images/mountains.svg")
 		button.header__hamburger(@click="menuOpen = !menuOpen")
 			span
 		nav.header__nav
 			ul.header__nav-list
 				li.header__nav-list-item(v-for="item in navItems")
-					a.header__nav-list-link(href="item.href") {{ item.label }}
+					a.header__nav-list-link(@click="menuOpen = !menuOpen" :href="item.href") {{ item.label }}
+				li.header__nav-list-item
+					button.header__nav-list-link(@click="toggleNight" type="button") Night Mode
+			.header__nav-social
+				h5.header__nav-social-title Be Social
+				ul.header__nav-social-list
+					li.header__nav-social-item(v-for="item in socialItems")
+						a.header__nav-social-link(:href="item.href" target="_blank")
+							span.sr-only {{ item.label }}
+							i(:class="item.icon")
+
 </template>
 
 <script>
@@ -19,19 +27,73 @@ export default {
   data() {
 		return {
 			menuOpen: false,
+			isSticky: false,
 			navItems: [
-				{ "href": "#work",
-					"label": "Work" },
-				{ "href": "#skills",
-					"label": "Skills" },
-				{ "href": "#about",
-					"label": "About" },
-				{ "href": "/Resume",
-					"label": "Resume" },
-				{ "href": "mailto:joshua.ward@me.com",
-					"label": "Hire Me!" }
-			]
+				{ 
+					"href": "#work",
+					"label": "Work" 
+				},
+				{ 
+					"href": "#skills",
+					"label": "Skills" 
+				},
+				{ 
+					"href": "#about",
+					"label": "About" 
+				},
+				{ 
+					"href": "/Resume",
+					"label": "Resume" 
+				},
+				{ 
+					"href": "mailto:joshua.ward@me.com",
+					"label": "Hire Me!" 
+				}
+			],
+			socialItems: [
+				{ 
+					"href": "https://codepen.io/joshuaward/pens/popular/",
+					"label": "CodePen",
+					"icon": "fab fa-codepen"
+				},
+				{ 
+					"href": "https://github.com/joshuaward",
+					"label": "GitHub" ,
+					"icon": "fab fa-github"
+				},
+				{ 
+					"href": "https://dribbble.com/joshuaward",
+					"label": "Dribbble" ,
+					"icon": "fab fa-dribbble"
+				},
+				{ 
+					"href": "https://www.linkedin.com/in/joshuawward/",
+					"label": "LinkedIn" ,
+					"icon": "fab fa-linkedin"
+				}
+			],
 		}
+	},
+	methods: {
+		stickyHeader() {
+			const header = document.querySelector('.header');
+			const sticky = header.offsetTop;
+			if(window.scrollY > sticky) {
+				this.isSticky = true;
+			} else {
+				this.isSticky = false;
+			}
+		},
+		toggleNight() {
+			document.body.classList.toggle('night');
+			this.menuOpen = false;
+		}
+	},
+	mounted() {
+		window.addEventListener('scroll', this.stickyHeader);
+	},
+	destroy() {
+		window.removeEventListener('scroll', this.stickyHeader)
 	}
 }
 </script>
@@ -45,8 +107,17 @@ export default {
 	right: 0;
 	padding-top: 0.75rem;
 	padding-bottom: 0.75rem;
-	background-color: rgba($primary,0.125);
 	z-index: 9999;
+	&.is-sticky {
+		background-color: rgba($white,0.6);
+		box-shadow: 0 0 0.3125rem rgba($black,0.2);
+		transition: 0.25s linear;
+		.night & {
+			background-color: transparentize($night,0.1);
+			box-shadow: 0 0 0.3125rem rgba(0,0,0,0.2);
+			transition: 0.15s linear;
+		}
+	}
 	&__inner {
 		// @include container;
 		display: flex;
@@ -59,29 +130,20 @@ export default {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 1.875rem;
-		height: 1.875rem;
-		background-color: $accent;
-		border-radius: 50%;
-		// svg {
-		// 	position: relative;
-		// 	width: 100%;
-		// 	height: 100%;
-		// }
-		// &-circle {
-		// 	fill: $accent;
-		// 	transition: fill 0.25s linear;
-		// }
-		// &-mountains {
-		// 	fill: $white;
-		// 	transition: fill 0.25s linear;
-		// }
+		width: 2.5rem;
+		height: 2.5rem;
+		.is-sticky & {
+			width: 1.875rem;
+			height: 1.875rem;
+		}
 	}
 	&__hamburger {
 		position: relative;
 		display: block;
-		width: 2.5rem;
-		height: 2.5rem;
+		flex: 0 1 1.75rem;
+		width: 1.5em;
+		height: 1.875rem;
+		padding: 0;
 		background-color: transparent;
 		border: 0;
 		cursor: pointer;
@@ -94,6 +156,9 @@ export default {
 			height: 0.125rem;
 			background-color: $primary;
 			transform: translate(-50%,-50%);
+			.night & {
+				background-color: $accent;
+			}
 			&::before, 
 			&::after {
 				content: '';
@@ -102,6 +167,9 @@ export default {
 				width: 1.5rem;
 				height: 0.125rem;
 				background-color: $primary;
+				.night & {
+					background-color: $accent;
+				}
 			}
 
 			&::before {
@@ -133,7 +201,7 @@ export default {
 				&::before, 
 				&::after {
 					visibility: visible;
-					background-color: $accent;
+					background-color: $white;
 					transform-origin: center center;
 					transform: translateY(0);
 					transition: all 250ms linear;
@@ -164,32 +232,71 @@ export default {
 		}
 	}
 	&__nav {
-		position: fixed;
+		position: absolute;
 		top: 0;
-		right: -90vw;
-		width: 90vw;
+		left: 0;
+		width: 100vw;
 		height: 100vh;
 		margin: 0;
 		padding: 3rem 0;
-		background-color: transparentize($primary,0.05);
-		transition: right 150ms linear;
+		pointer-events: none;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.25s linear;
 		z-index: 998;
-		@include mq(md) {
-			width: var(--sm);
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 50vw;
+			height: 100vh;
+			background-color: rgba($primary,0.9);
+			backdrop-filter: blur(0);
+			transition: all 0.25s ease;
+			z-index: -1;;
+		}
+		&::before {
+			left: -50vw;
+			@include mq(md) {
+				left: -60vw;
+				width: 60vw;
+				background-color: rgba($black,0.5);
+			}
+			@include mq(lg) {
+				left: -70vw;
+				width: 70vw;
+				background-color: rgba($black,0.5);
+			}
+		}
+		&::after {
+			right: -50vw;
+			@include mq(md) {
+				right: -40vw;
+				width: 40vw;
+				background-color: rgba($primary,0.9);
+			}
+			@include mq(lg) {
+				right: -30vw;
+				width: 30vw;
+				background-color: rgba($primary,0.9);
+			}
 		}
 		.is-active & {
-			right: 0;
-			transition: right 150ms linear;
+			pointer-events: all;
+			opacity: 1;
+			visibility: visible;
+			&::before,
+			&::after {
+				backdrop-filter: blur(0.1875rem);
+				transition: all 0.25s ease;
+			}
 			&::before {
-				position: fixed;
-				content: '';
-				top: 0;
+				left: 0;
+			}
+			&::after {
 				right: 0;
-				width: 100%;
-				height: 100%;
-				background-color: rgba($black,0.4);
-				transition: right 150ms linear;
-				z-index: 0;
 			}
 		}
 		&-list {
@@ -214,23 +321,26 @@ export default {
 				@for $i from 1 through 5 {
 						&:nth-child(#{$i}) {
 							.header__nav-list-link {
-								transition-delay: #{$i * 0.1}s;
+								transition-delay: #{$i * 0.09}s;
+								.is-active & {
+									transition-delay: 0;
+								}
 							}
 						}
 					}
 			}
 			&-link {
-				display: block;
+				display: inline-block;
 				font-family: $fontFamilyHeadings;
 				font-size: 1.25rem;
 				font-weight: 400;
 				color: $white;
 				text-decoration: none;
-				transform: translateX(100%);
+				transform: translateX(200%);
 				transition: 0.25s ease;
 				.is-active & {
 					transform: translateX(0);
-					
+					transition: 0.15s ease;
 				}
 				&::before {
 					position: absolute;
@@ -257,34 +367,61 @@ export default {
 					color: $accent;
 				}
 			}
+			button.header__nav-list-link {
+				background-color: transparent;
+				border: 0;
+				color: darken($primary,20%);
+				font-weight: bold;
+				text-shadow: 1px 1px 0 rgba($accent,0.6);
+				cursor: pointer;
+				.night & {
+					color: $night;
+					text-shadow: 1px 1px 0 $primary;
+				}
+			}
 		}
 
-		.social {
+	&-social {
 			position: absolute;
 			bottom: 1.25rem;
 			display: flex;
 			align-items: center;
-			justify-content: space-between;
+			justify-content: flex-end;
 			width: 100%;
 			padding: 0 1.25rem 0 2.5rem;
-
-			> h5 {
+			transform: translateX(100%);
+			transition: 0.5s ease;
+			.is-active & {
+				transform: translateX(0);
+				transition: 0.5s ease;
+			}
+			&-title {
 				position: relative;
 				display: block;
-				width: 100%;
-				color: $white;
+				color: $whitesmoke;
+				font-family: $fontFamilyBase;
+				font-size: 0.875rem;
+				font-weight: bold;
+				text-transform: uppercase;
 			}
-
-			> a {
-				position: relative;
-				display: inline-block;
-				margin: 0 0.625rem;
-				color: $white;
-
-				&:hover {
-					color: $accent;
+			&-list {
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+				list-style: none;
+			}
+			&-item {
+				> a {
+					position: relative;
+					display: inline-block;
+					margin: 0 0.625rem;
+					color: $white;
+					&:hover {
+						color: $accent;
+					}
 				}
 			}
+
 		}
 	}
 }
