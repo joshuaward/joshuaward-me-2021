@@ -16,6 +16,14 @@ export default {
 		return {
 			workItems: [
 				{
+					"title": "Vue Flag Guessing Game",
+					"description": "An app that connects to the countries API and pulls in the country's name and flag. The game generates and array of multiple choice options, chooses a correct answer and then shuffles the array. Upon answering, a screen will appear that says whether you got it right or wrong. Then onto the next flag.",
+					"tools": ['Vue', 'CSS3', 'ES6'],
+					"href": "https://map-guessing-game.joshuaward.me/",
+					"target": "_blank",
+					"cta": "View Project"
+				},
+				{
 					"title": "Vue Questionnaire",
 					"description": "Vue app questionnaire carousel.",
 					"tools": ['Vue', 'CSS3', 'ES6'],

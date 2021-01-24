@@ -41,10 +41,10 @@ export default {
 					"href": "#about",
 					"label": "About" 
 				},
-				{ 
-					"href": "/Resume",
-					"label": "Resume" 
-				},
+				// { 
+				// 	"href": "/Resume",
+				// 	"label": "Resume" 
+				// },
 				{ 
 					"href": "mailto:joshua.ward@me.com",
 					"label": "Hire Me!" 

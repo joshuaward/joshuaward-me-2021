@@ -1,5 +1,5 @@
 <template lang="pug">
-section.skills
+section#skills.skills
 	.skills__inner
 		header.skills__header
 			h2.skills__title My Skills

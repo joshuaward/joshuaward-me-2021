@@ -5,6 +5,7 @@
 	Work
 	Skills
 	About
+	Footer
 </template>
 
 <script>
@@ -13,6 +14,7 @@ import Hero from './components/Hero.vue'
 import Work from './components/Work.vue'
 import Skills from './components/Skills.vue'
 import About from './components/About.vue'
+import Footer from './components/Footer.vue'
 
 export default {
 	name: 'App',
@@ -21,7 +23,8 @@ export default {
 		Hero,
 		Work,
 		Skills,
-		About
+		About,
+		Footer
 	},
 }
 </script>
