@@ -1,7 +1,7 @@
 <template lang="pug">
 section.hero
 	.hero__inner
-		h1 ui/ux engineer
+		h1.hero__heading ui/ux engineer
 		.hero__scroller
 			a.hero__scroll(href="#work")
 				i.fas.fa-angle-down(aria-hidden="true")
@@ -29,10 +29,14 @@ export default {
 	margin: 0;
 	padding: 50px 0 0;
 	background-color: rgba($primary,0.1);
-	h1 {
+	z-index: 0;
+	&__heading {
 		color: $primary;
+		font-family: $fontFamilyHeadings;
 		font-size: 3rem;
 		font-weight: 600;
+		line-height: 1;
+		text-align: center;
 		text-shadow: 10px 10px 0 rgba(0,0,0,0.1);
 		z-index: 9;
 	}
@@ -76,11 +80,15 @@ export default {
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-image: url('/assets/images/paper-circles.jpg');
+		background-image: url('../assets/images/paper-circles.jpg');
 		background-position: center center;
 		background-repeat: no-repeat;
 		background-size: cover;
-		z-index: 0;
+		z-index: -1;
+		.night & {
+			background-image: url('../assets/images/paper-circles-night.jpg');
+			transition: 0.15s linear;
+		}
 	}
 }
 </style>
