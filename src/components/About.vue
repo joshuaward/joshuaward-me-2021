@@ -4,7 +4,7 @@ section#about.about.watch
 		.about__image
 			img(src="../assets/images/me.png" alt="Joshua Ward")
 		.about__bio
-			p.about__bio-copy Hi. My name is Joshua Ward. I design and build websites. Originally from South Dakota, my wife and I moved to the Denver area (from Phoenix) with our two amazing dogs. My mission in life is to be a respectable human being and make a positive impact on the people I encounter. In my free time, I enjoy traveling, skateboarding, snowboarding, art, the Rocky Mountains, hiking, and music. I graduated Cum Laude from Arizona State University with a Bachelor's degree in Web Design & Internet Development in 2011. I also have an Associate's degree in Graphic Design for print from Scottsdale Community College.
+			p.about__bio-copy Hi. My name is Joshua Ward. I design and build websites. Originally from South Dakota, I moved to the Denver area about {{ yearsLived }} years ago. My mission in life is to be a respectable human being and make a positive impact on the people I encounter. In my free time, I enjoy traveling, skateboarding, snowboarding, art, the Rocky Mountains, hiking, and music. I graduated Cum Laude from Arizona State University with a Bachelor's degree in Web Design & Internet Development in 2011. I also have an Associate's degree in Graphic Design for print from Scottsdale Community College.
 </template>
 
 <script>
@@ -13,6 +13,11 @@ export default {
   data() {
 		return {
 			
+		}
+	},
+	computed: {
+		yearsLived() {
+			return new Date().getFullYear() - 2015;
 		}
 	},
 	methods: {
