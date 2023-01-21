@@ -1,10 +1,12 @@
 <template lang="pug">
-#app
+#pageWrap
+	Loading(v-if="loading")
 	Header
 	Hero
 	Work
 	Skills
 	About
+	Footer
 </template>
 
 <script>
@@ -13,16 +15,33 @@ import Hero from './components/Hero.vue'
 import Work from './components/Work.vue'
 import Skills from './components/Skills.vue'
 import About from './components/About.vue'
+import Footer from './components/Footer.vue'
+import Loading from './components/Loading.vue'
 
 export default {
 	name: 'App',
 	components: {
+		Loading,
 		Header,
 		Hero,
 		Work,
 		Skills,
-		About
+		About,
+		Footer
 	},
+	data() {
+		return {
+			loading: false
+		}
+	},
+	mounted() {
+		this.loading = true
+		document.body.classList.add('no-scroll');
+		setTimeout(() => {
+			this.loading = false
+			document.body.classList.remove('no-scroll');
+		},5000);
+	}
 }
 </script>
 
@@ -45,6 +64,9 @@ html {
 body {
 	margin: 0;
 	padding: 0;
+	&.no-scroll {
+		overflow: hidden !important;
+	}
 	&.night {
 		.modal {
 			article {
