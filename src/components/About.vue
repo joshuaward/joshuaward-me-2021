@@ -15,6 +15,11 @@ export default {
 			
 		}
 	},
+	computed: {
+		yearsLived() {
+			return new Date().getFullYear() - 2015;
+		}
+	},
 	methods: {
 		observeBio() {
 			const options = { threshold: [0] };
