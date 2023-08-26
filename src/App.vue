@@ -7,7 +7,7 @@
 	Work
 	Skills
 	About
-	Footer
+	//- Footer
 </template>
 
 <script>
