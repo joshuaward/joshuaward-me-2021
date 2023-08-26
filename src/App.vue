@@ -3,6 +3,7 @@
 	Loading(v-if="loading")
 	Header
 	Hero
+	Ads
 	Work
 	Skills
 	About
@@ -12,6 +13,7 @@
 <script>
 import Header from './components/Header.vue'
 import Hero from './components/Hero.vue'
+import Ads from './components/Ads.vue'
 import Work from './components/Work.vue'
 import Skills from './components/Skills.vue'
 import About from './components/About.vue'
@@ -24,6 +26,7 @@ export default {
 		Loading,
 		Header,
 		Hero,
+		Ads,
 		Work,
 		Skills,
 		About,
