@@ -26,6 +26,9 @@ section.ads
 		padding-top: 2rem;
 		padding-bottom: 2rem;
 		background-color: $white;
+		.night & {
+			background-color: $primary;
+		}
 		@include mq(md) {
 			padding-top: 3rem;
 			padding-bottom: 3rem;
