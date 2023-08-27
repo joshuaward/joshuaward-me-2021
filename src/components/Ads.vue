@@ -41,13 +41,15 @@ section.ads
 			gap: 1rem;
 			@include mq(md) {
 				flex-direction: row;
+				align-items: stretch;
+				justify-content: center;
 			}
 		}
 		&__link {
 			position: relative;
 			display: flex;
 			@include mq(md) {
-				flex: 1 1 50%;
+				flex: 0 1 25%;
 				
 			}
 			&::before {
