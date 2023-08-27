@@ -24,15 +24,15 @@ section.ads
 	<style scoped lang="scss">
 	.ads {
 		padding-top: 2rem;
-		padding-bottom: 2rem;
+		padding-bottom: 0rem;
 		background-color: $white;
 		@include mq(md) {
 			padding-top: 3rem;
-			padding-bottom: 3rem;
+			padding-bottom: 0rem;
 		}
 		@include mq(lg) {
 			padding-top: 4rem;
-			padding-bottom: 4rem;
+			padding-bottom: 0rem;
 		}
 		&__inner {
 			@include container;
@@ -41,13 +41,15 @@ section.ads
 			gap: 1rem;
 			@include mq(md) {
 				flex-direction: row;
+				align-items: stretch;
+				justify-content: center;
 			}
 		}
 		&__link {
 			position: relative;
 			display: flex;
 			@include mq(md) {
-				flex: 1 1 50%;
+				flex: 0 1 25%;
 				
 			}
 			&::before {
