@@ -7,6 +7,8 @@
 	Work
 	Skills
 	About
+	Ads
+	Footer
 </template>
 
 <script>
@@ -40,8 +42,6 @@ export default {
 		this.loading = true
 		document.body.classList.add('no-scroll');
 		const randomNumber = Math.floor(Math.random() * 5);
-
-		console.log(randomNumber);
 
 		setTimeout(() => {
 			this.loading = false
@@ -229,5 +229,9 @@ a {
 				0 0.625rem 0.625rem rgba(0,0,0,0.12);
 		}
 	}
+}
+
+#pageWrap {
+	padding-bottom: 5.3125rem;
 }
 </style>
