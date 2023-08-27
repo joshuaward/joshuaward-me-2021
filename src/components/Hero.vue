@@ -1,7 +1,6 @@
 <template lang="pug">
 section.hero
 	.hero__inner
-		h1.hidden Web Development and Travel: Tips for Building Stunning Websites and Exploring the World
 		h1.hero__heading ui/ux engineer
 		.hero__scroller
 			a.hero__scroll(href="#work")
@@ -91,16 +90,5 @@ export default {
 			transition: 0.15s linear;
 		}
 	}
-}
-
-.hidden {
-	position: absolute;
-  width: 1px;
-	height: 1px;
-	clip: rect(0 0 0 0); 
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  white-space: nowrap; 
 }
 </style>
