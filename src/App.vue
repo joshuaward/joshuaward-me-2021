@@ -7,7 +7,6 @@
 	Work
 	Skills
 	About
-	//- Footer
 </template>
 
 <script>
@@ -40,10 +39,14 @@ export default {
 	mounted() {
 		this.loading = true
 		document.body.classList.add('no-scroll');
+		const randomNumber = Math.floor(Math.random() * 5);
+
+		console.log(randomNumber);
+
 		setTimeout(() => {
 			this.loading = false
 			document.body.classList.remove('no-scroll');
-		},5000);
+		}, (randomNumber * 1000));
 	}
 }
 </script>
