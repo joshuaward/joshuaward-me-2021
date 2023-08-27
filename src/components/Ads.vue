@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/script-setup-uses-vars -->
 <template lang="pug">
 section.ads
 	.ads__inner
